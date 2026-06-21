@@ -1,7 +1,9 @@
 {
   "name": "ai-interview-coach",
   "version": "0.1.0",
+  "description": "A responsive AI interview preparation coach MVP built with Next.js.",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -1,32 +1,76 @@
-# AI 面试教练
+# AI Interview Coach
 
-面向求职者的响应式网页 MVP，帮助用户基于真实经历准备面试题、优化回答、进行重点练习，并记录现实面试复盘。
+A responsive web MVP for interview preparation. It helps job seekers generate targeted interview questions, structure answers around real experience, save final answers, practice focus questions, and record real interview retrospectives.
 
-## 当前阶段
+The product principle is simple: AI can organize and improve expression, but it must not invent a user's experience, responsibilities, achievements, or data.
 
-项目已完成可本地运行的响应式网页 MVP。当前使用浏览器本地存储；配置远程模型服务后可使用动态题目生成、回答辅导和参考应答，未配置或远程调用失败时仍可通过本地规则体验主流程。
+## Features
 
-- [MVP 产品需求文档](docs/MVP_PRD.md)
-- [研发实施计划](docs/IMPLEMENTATION_PLAN.md)
-- [产品讨论历史](docs/PRODUCT_DISCUSSION_HISTORY.md)
-- [后端接入说明](docs/BACKEND_SETUP.md)
-- [中国市场技术架构决策](docs/ARCHITECTURE_DECISION_CHINA.md)
-- [安全与隐私开发基线](docs/SECURITY.md)
-- [当前实施状态](docs/CURRENT_STATUS.md)
-- [中国市场技术架构决策](docs/ARCHITECTURE_DECISION_CHINA.md)
+- Targeted interview question generation for a selected industry, role, and experience level.
+- Optional resume and job description context for more relevant questions.
+- Semantic deduplication hints across generated questions, hidden questions, practice history, and real interview retrospectives.
+- Single-question practice with AI feedback, answer structure, keywords, improvement suggestions, and information gaps.
+- User-confirmed final answers: AI reference answers are not treated as personal final answers until the user confirms and saves them.
+- Focus practice and review scheduling for questions that need more repetition.
+- Real interview retrospective records with question-level classification.
+- Responsive Next.js UI for desktop and mobile.
 
-## 本地运行
+## Privacy Model
+
+This repository does not include personal interview data, resumes, or API keys.
+
+The current MVP stores account and practice data in the browser's `localStorage`, so data stays in the specific browser where it was entered. GitHub only receives source code when you push commits.
+
+Important boundaries:
+
+- `.env.local` is ignored and must never be committed.
+- Uploaded resume files are parsed for text in memory by the MVP and are not saved as original files.
+- Phone numbers, resumes, answers, retrospectives, and generated practice data are sensitive user data.
+- AI calls happen only on the server side.
+- AI must mark information gaps instead of filling in missing personal facts.
+
+See [docs/SECURITY.md](docs/SECURITY.md) for the security and privacy development baseline.
+
+## Tech Stack
+
+- Next.js App Router
+- React
+- TypeScript
+- Tailwind CSS
+- Local browser storage for the MVP
+- Server-side AI adapter for DeepSeek, OpenAI-compatible, or custom Chat Completions APIs
+
+## Getting Started
+
+Install dependencies:
 
 ```bash
 npm install
+```
+
+Start the development server:
+
+```bash
 npm run dev
 ```
 
-首次输入新手机号时需要设置登录密码；再次使用同一手机号时输入该密码登录。当前 MVP 的账号与业务数据仍保存在浏览器本地。
+Open:
 
-## 模型服务配置
+```text
+http://localhost:3000
+```
 
-复制 `.env.example` 为 `.env.local`，按自己的模型服务填写：
+The first time you enter a new phone number, the MVP asks you to set a local login password. Returning to the same phone number in the same browser uses that password to unlock local data.
+
+## AI Configuration
+
+Copy `.env.example` to `.env.local`:
+
+```bash
+cp .env.example .env.local
+```
+
+Then fill in your own model service values:
 
 ```bash
 AI_PROVIDER=deepseek
@@ -36,18 +80,47 @@ AI_MODEL_FAST=deepseek-v4-flash
 AI_MODEL_QUALITY=deepseek-v4-pro
 ```
 
-`AI_PROVIDER` 支持 `deepseek`、`openai`、`openai-compatible` 和 `custom`。其中 `openai-compatible` / `custom` 适合兼容 OpenAI Chat Completions 的模型网关，用户需要自行填写对应的 `AI_API_BASE_URL` 和模型名。
+`AI_PROVIDER` supports `deepseek`, `openai`, `openai-compatible`, and `custom`.
 
-## 验证
+Without remote AI configuration, the app falls back to local demo rules so the main product flow remains testable.
+
+## Validation
+
+Run the full local check before publishing changes:
 
 ```bash
-npm test
 npm run lint
+npm run test
 npm run build
 ```
-## 产品原则
 
-- AI 不得虚构用户经历、职责、成果或数据。
-- 不把面试回答简单判断为对或错，以维度评级和具体建议提供反馈。
-- 降低首次使用门槛，仅在用户使用核心功能时要求补充必要的求职目标信息。
-- 第一版优先完成响应式网页，暂不开发微信小程序、语音面试和付费功能。
+The test suite includes checks for:
+
+- Question generation limits and deduplication.
+- AI answer evaluation normalization.
+- Reference answer fact constraints.
+- Resume file policy.
+- Repository secret scanning.
+
+## Product Docs
+
+- [MVP PRD](docs/MVP_PRD.md)
+- [Implementation Plan](docs/IMPLEMENTATION_PLAN.md)
+- [Product Discussion History](docs/PRODUCT_DISCUSSION_HISTORY.md)
+- [Backend Setup](docs/BACKEND_SETUP.md)
+- [China Architecture Decision](docs/ARCHITECTURE_DECISION_CHINA.md)
+- [Current Status](docs/CURRENT_STATUS.md)
+- [Security Baseline](docs/SECURITY.md)
+
+## Roadmap
+
+- Replace browser-only local storage with authenticated server-side storage.
+- Add production-ready SMS login, database access, and object storage.
+- Strengthen rate limiting, audit logs, and data retention controls.
+- Improve question quality evaluation and semantic deduplication.
+- Add more review modes for long-term answer recall.
+- Prepare public privacy policy and user agreement for real users.
+
+## License
+
+MIT License. See [LICENSE](LICENSE).
