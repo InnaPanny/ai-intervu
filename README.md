@@ -4,6 +4,24 @@ A responsive web MVP for interview preparation. It helps job seekers generate ta
 
 The product principle is simple: AI can organize and improve expression, but it must not invent a user's experience, responsibilities, achievements, or data.
 
+## Access
+
+Live Demo:
+
+```text
+Pending first public deployment. After deploying, replace this line with the production URL.
+```
+
+Local Development:
+
+```text
+http://localhost:3000
+```
+
+The local address only works on the computer running `npm run dev`. For public sharing, deploy the app and add the production URL above and in the GitHub repository's About / Website field.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FInnaPanny%2Fai-intervu)
+
 ## Features
 
 - Targeted interview question generation for a selected industry, role, and experience level.
@@ -40,7 +58,7 @@ See [docs/SECURITY.md](docs/SECURITY.md) for the security and privacy developmen
 - Local browser storage for the MVP
 - Server-side AI adapter for DeepSeek, OpenAI-compatible, or custom Chat Completions APIs
 
-## Getting Started
+## Local Development
 
 Install dependencies:
 
@@ -60,7 +78,13 @@ Open:
 http://localhost:3000
 ```
 
+If port `3000` is already in use, Next.js may print another local URL such as `http://localhost:3001`. Use the URL shown in your terminal.
+
 The first time you enter a new phone number, the MVP asks you to set a local login password. Returning to the same phone number in the same browser uses that password to unlock local data.
+
+## Public Deployment
+
+The recommended public deployment target for this MVP is Vercel. See [Deployment Guide](docs/DEPLOYMENT.md) for the full setup flow, environment variables, and cost-control notes.
 
 ## AI Configuration
 
@@ -110,6 +134,7 @@ The test suite includes checks for:
 - [Backend Setup](docs/BACKEND_SETUP.md)
 - [China Architecture Decision](docs/ARCHITECTURE_DECISION_CHINA.md)
 - [Current Status](docs/CURRENT_STATUS.md)
+- [Deployment Guide](docs/DEPLOYMENT.md)
 - [Security Baseline](docs/SECURITY.md)
 
 ## Roadmap
