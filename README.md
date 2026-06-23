@@ -9,7 +9,7 @@ The product principle is simple: AI can organize and improve expression, but it 
 Live Demo:
 
 ```text
-Pending first public deployment. After deploying, replace this line with the production URL.
+https://ai-intervu-two.vercel.app
 ```
 
 Local Development:
