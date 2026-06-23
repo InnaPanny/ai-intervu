@@ -54,13 +54,13 @@ The app can run without remote AI configuration. In that mode it falls back to l
 
 For DeepSeek-backed AI, configure these variables in Vercel:
 
-```bash
-AI_PROVIDER=deepseek
-AI_API_KEY=your_deepseek_api_key
-AI_API_BASE_URL=https://api.deepseek.com
-AI_MODEL_FAST=deepseek-v4-flash
-AI_MODEL_QUALITY=deepseek-v4-pro
-```
+| Variable | Value to configure in Vercel |
+| --- | --- |
+| `AI_PROVIDER` | `deepseek` |
+| `AI_API_KEY` | Your DeepSeek API key from the provider dashboard |
+| `AI_API_BASE_URL` | `https://api.deepseek.com` |
+| `AI_MODEL_FAST` | `deepseek-v4-flash` |
+| `AI_MODEL_QUALITY` | `deepseek-v4-pro` |
 
 Do not commit `.env.local`, API keys, phone numbers, resumes, answers, or other sensitive data.
 
