@@ -22,6 +22,40 @@ The local address only works on the computer running `npm run dev`. For public s
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FInnaPanny%2Fai-intervu)
 
+## Product Preview
+
+The screenshots below use fictional demo data and show the main MVP workflow.
+
+### Home Dashboard
+
+![Home dashboard showing review tasks, active job target, core pending questions, and next recommended action.](./public/readme/home-desktop.png)
+
+The home page is action-oriented: it highlights today's review tasks, the active job target, pending core questions, and the next step to continue preparation.
+
+### Responsive Home
+
+<img src="./public/readme/home-mobile.png" alt="Mobile home dashboard with the same interview preparation priorities." width="320">
+
+The same priorities are available in a narrow layout with mobile bottom navigation, so the MVP can be used from a phone browser as well as desktop.
+
+### Question Library
+
+![Question library with pending questions, core practice labels, recommendation reasons, and practice entry points.](./public/readme/questions-desktop.png)
+
+The question library keeps generated questions visible until the user chooses to hide them. Core questions are marked, each question explains why it was recommended, and completed questions move into the practiced list.
+
+### Single-Question Practice
+
+![Single-question practice page showing answer drafting, AI feedback, dimensions, information gaps, and final answer confirmation.](./public/readme/question-detail-desktop.png)
+
+The practice page keeps the product's fact boundary visible: AI feedback can identify information gaps and provide a reference answer, but the user must review, edit, and click "确认并保存" before it becomes their personal final answer.
+
+### Focus Practice
+
+![Focus practice page showing review modes, mastery levels, review count, and next review timing.](./public/readme/focus-practice-desktop.png)
+
+Focus practice supports repeated training through keyword recall, independent answering, and structure fill-in. The user decides what enters focus practice, while the system tracks mastery and review timing.
+
 ## Features
 
 - Targeted interview question generation for a selected industry, role, and experience level.
